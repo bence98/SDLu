@@ -1,7 +1,7 @@
 #ifndef SDL_U_H
 #define SDL_U_H
 
-/* SDLu v1.0 
+/* SDLu v1.0.1
  * (c) 2018, Csókás Bence Viktor
  */
 
