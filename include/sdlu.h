@@ -1,7 +1,7 @@
 #ifndef SDL_U_H
 #define SDL_U_H
 
-/* SDLu v1.1
+/* SDLu v1.1.-1
  * (c) 2018, Csókás Bence Viktor
  */
 
@@ -19,21 +19,13 @@ bool sdlu_is_debug();
 
 /* *** Implementálandó függvények *** */
 
-/* Állapotstruktúra
- * Ide kerül minden, amit az Init-ből a Loop-ba kell átadni
- */
-struct context;
-
-/* Inicializáció
- * @returns egy pointer, amit majd átadunk a Loop függvénynek, kilépéskor pedig törlünk
- */
-struct context* sdlu_OnInit();
+/* Inicializáció, globális változók beállítása (pl. renderer objektum) */
+void sdlu_OnInit();
 
 /* Loop
  * @parameter event SDL üzenet
- * @parameter ctx a pointer az Init függvénytől
  * @returns kilépési szándék
  */
-bool sdlu_MessageLoop(SDL_Event event, struct context* ctx);
+bool sdlu_MessageLoop(SDL_Event event);
 
 #endif //SDL_U_H

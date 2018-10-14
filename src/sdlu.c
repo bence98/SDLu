@@ -1,7 +1,7 @@
 #include "sdlu.h"
 #include <string.h>
 
-/* SDLu v1.0.1
+/* SDLu v1.1.-1
  * (c) 2018, Csókás Bence Viktor
  */
 
@@ -29,14 +29,12 @@ int main(int argc, char* argv[]){
 		if(strcmp("--debug", argv[i])==0)
 			_sdlu_dbg=true;
 	
-	struct context* ctx=sdlu_OnInit();
-	
+	sdlu_OnInit();
 	SDL_Event evt;
 	SDL_WaitEvent(&evt);
-	while(evt.type != SDL_QUIT && !sdlu_MessageLoop(evt, ctx))
+	while(evt.type != SDL_QUIT && !sdlu_MessageLoop(evt))
 		SDL_WaitEvent(&evt);
 	
-	free(ctx);
 	SDL_Quit();
 	
 	return 0;
