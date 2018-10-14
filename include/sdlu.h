@@ -1,7 +1,7 @@
 #ifndef SDL_U_H
 #define SDL_U_H
 
-/* SDLu v1.0.1
+/* SDLu v1.0.2
  * (c) 2018, Csókás Bence Viktor
  */
 
@@ -16,16 +16,21 @@ SDL_Renderer* sdlu_create_win_renderer(char* title, unsigned int w, unsigned int
 
 /* *** Implementálandó függvények *** */
 
-/* Inicializáció
- * @returns egy pointer, amit majd átadunk a loop függvénynek, kilépéskor pedig törlünk
+/* Állapotstruktúra
+ * Ide kerül minden, amit az Init-ből a Loop-ba kell átadni
  */
-void* sdlu_OnInit();
+struct context;
+
+/* Inicializáció
+ * @returns egy pointer, amit majd átadunk a Loop függvénynek, kilépéskor pedig törlünk
+ */
+struct context* sdlu_OnInit();
 
 /* Loop
  * @parameter event SDL üzenet
- * @parameter from_init pointer az sdlu_OnInit()-tól
+ * @parameter ctx a pointer az Init függvénytől
  * @returns kilépési szándék
  */
-bool sdlu_MessageLoop(SDL_Event event, void* from_init);
+bool sdlu_MessageLoop(SDL_Event event, struct context* ctx);
 
 #endif //SDL_U_H

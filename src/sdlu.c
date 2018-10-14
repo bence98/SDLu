@@ -20,7 +20,7 @@ SDL_Renderer* sdlu_create_win_renderer(char* title, unsigned int w, unsigned int
 }
 
 int main(int argc, char* argv[]){
-	void* ctx=sdlu_OnInit();
+	struct context* ctx=sdlu_OnInit();
 	
 	SDL_Event evt;
 	SDL_WaitEvent(&evt);
