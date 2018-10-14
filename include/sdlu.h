@@ -1,7 +1,7 @@
 #ifndef SDL_U_H
 #define SDL_U_H
 
-/* SDLu v1.0.2
+/* SDLu v1.1
  * (c) 2018, Csókás Bence Viktor
  */
 
@@ -13,6 +13,9 @@
 
 /* Ablak és renderer létrehozása */
 SDL_Renderer* sdlu_create_win_renderer(char* title, unsigned int w, unsigned int h);
+
+/* Hibakeresés mód (`--debug` kapcsoló) */
+bool sdlu_is_debug();
 
 /* *** Implementálandó függvények *** */
 

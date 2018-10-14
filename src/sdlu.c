@@ -1,17 +1,18 @@
 #include "sdlu.h"
+#include <string.h>
 
 /* SDLu v1.0.1
  * (c) 2018, Csókás Bence Viktor
  */
 
-bool sdlu_init=false;
+bool _sdlu_init=false, _sdlu_dbg=false;
 
 SDL_Renderer* sdlu_create_win_renderer(char* title, unsigned int w, unsigned int h){
-	if(!sdlu_init){
+	if(!_sdlu_init){
 		if(SDL_Init(SDL_INIT_EVERYTHING)<0)
 			return NULL;
 		else
-			sdlu_init=true;
+			_sdlu_init=true;
 	}
 	
 	SDL_Window* wnd=SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, 0);
@@ -19,7 +20,15 @@ SDL_Renderer* sdlu_create_win_renderer(char* title, unsigned int w, unsigned int
 	return SDL_CreateRenderer(wnd, -1, SDL_RENDERER_SOFTWARE);
 }
 
+bool sdlu_is_debug(){
+	return _sdlu_dbg;
+}
+
 int main(int argc, char* argv[]){
+	for(int i=1;i<argc;i++)
+		if(strcmp("--debug", argv[i])==0)
+			_sdlu_dbg=true;
+	
 	struct context* ctx=sdlu_OnInit();
 	
 	SDL_Event evt;
